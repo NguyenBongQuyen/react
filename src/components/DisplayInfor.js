@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './DisplayInfor.scss';
 
 //Stateful
@@ -24,7 +24,6 @@ import './DisplayInfor.scss';
 //                                         <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
 //                                     </div>
 //                                 </div>
-                                
 //                             )               
 //                         })}
 //                     </>
@@ -37,9 +36,21 @@ import './DisplayInfor.scss';
 //Stateless
 const DisplayInfor = (props) => {
     const {listUser} = props;
+
+    const [isShowHideListUser, setShowHideListUser] = useState(true);
+
+    const handleShowHideListUser = () => {
+        setShowHideListUser(!isShowHideListUser)
+    }
+
     return(
         <div className="display-infor-container">
-            {true && 
+            <div>
+                <span onClick={() => handleShowHideListUser()}>
+                    {isShowHideListUser === true ? "Hide list users: " : "Show list users: "}
+                </span>
+            </div>
+            {isShowHideListUser && 
                 <>
                     {listUser.map((user) => {
                         return(
@@ -51,8 +62,7 @@ const DisplayInfor = (props) => {
                                 <div>
                                     <button onClick={() => props.handleDeleteUser(user.id)}>Delete</button>
                                 </div>
-                            </div>
-                            
+                            </div>            
                         )               
                     })}
                 </>

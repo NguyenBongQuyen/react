@@ -4,10 +4,27 @@ import './DisplayInfor.scss';
 
 class DisplayInfor extends React.Component {
     constructor(props) {
+        console.log("Call constructor: 1")
         super(props);
         //babel compiler
         this.state = {
             isShowListUser: true
+        }
+    }
+
+    componentDidMount() {
+        console.log("Call me component did mount")
+        setTimeout(() => {
+            document.title = "React with beginner"
+        }, 3000)
+    }
+
+    componentDidUpdate(prevProps, preState, snapshot) {
+        console.log("Call me component did update", this.props, prevProps)
+        if (this.props.listUser !== prevProps.listUser) {
+            if (this.props.listUser.length === 5) {
+                alert("You got 5 users")
+            }
         }
     }
 
@@ -18,6 +35,7 @@ class DisplayInfor extends React.Component {
     }
 
     render() {
+        console.log("Call me render")
         //destructuring array/object
         const {listUser} = this.props;
 

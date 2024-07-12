@@ -1,7 +1,7 @@
 import axios from "../utils/axiosCustomize";
 
 const postCreateNewUser = (email, password, username, role, image) => {
-    //submit data
+    //submit data, body truyền form-data
     const data = new FormData();
     data.append('email', email);
     data.append('password', password);
@@ -33,4 +33,10 @@ const getUsersWithPaginate = (page, limit) => {
     return axios.get(`api/v1/participant?page=${page}&limit=${limit}`);
 }
 
-export { postCreateNewUser, getAllUser, putUpdateUser, deleteUser, getUsersWithPaginate }
+const postLogin = (email, password) => {
+    return axios.post(`api/v1/login`, 
+        {email: email, password: password} // ={email, password} nếu key và value giống nhau
+    ); //body truyền dạng form-urlencoded
+}
+
+export { postCreateNewUser, getAllUser, putUpdateUser, deleteUser, getUsersWithPaginate, postLogin }

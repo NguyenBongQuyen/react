@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux';
 import videoHomepage from '../../assets/video-homepage.mp4'
 
 const HomePage = (props) => {
+    const account = useSelector(state => state.user.account);
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+
     return (
         <div className="homepage-container">
             <video autoPlay muted loop>
@@ -13,7 +17,7 @@ const HomePage = (props) => {
                 <div className='title-1'>There's a better way to ask</div>
                 <div className='title-2'>You don't want to make a boring form.
                     And your audience won't answer one.
-                    Create a typeform instead-and make everyone happy.
+                    Create a type form instead-and make everyone happy.
                 </div>
                 <div className='title-3'>
                     <button>Get's started. It's free</button>

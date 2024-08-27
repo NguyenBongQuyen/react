@@ -35,7 +35,7 @@ const getUsersWithPaginate = (page, limit) => {
 
 const postLogin = (email, password) => {
     return axios.post(`api/v1/login`, 
-        {email: email, password: password} // ={email, password} nếu key và value giống nhau
+        {email: email, password: password, delay: 5000} // ={email, password} nếu key và value giống nhau
     ); //body truyền dạng form-urlencoded
 }
 
